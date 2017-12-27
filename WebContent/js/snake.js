@@ -4,11 +4,11 @@
 
 var snake = (function(initialLength) {
 
+	var movementDirection = DIRECTION.RIGHT;
 	var _init = function() {
-		this.length=initialLength;
 		this.body = [];
 		//populate our snake body
-		for (var i = length; i > 0; i--) {
+		for (var i = initialLength; i > 0; i--) {
 			body.push({x:i,y:0});
 		}
 	}
@@ -23,8 +23,8 @@ var snake = (function(initialLength) {
 	
 	_init();
 	return {
-		length : length,
 		body : body,
-		move : move
+		move : move,
+		movementDirection : movementDirection
 	};
 })(5);
