@@ -13,7 +13,7 @@ var snake = (function(initialLength) {
 		}
 	}
 	
-	var checkCollisions = function() {
+	var _checkCollisions = function() {
 		
 	}
 	
