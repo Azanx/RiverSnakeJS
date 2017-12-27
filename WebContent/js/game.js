@@ -13,14 +13,11 @@ var Game = (function() {
 		this.y = Math.floor(Math.random() * (mapHeight / fieldSize));
 		food = this;
 	}
-	snake.move();
+//	snake.move();
+//	createFood();
+//	alert('Food x: ' + food.x + ', y: ' + food.y);
+//	createFood();
+//	alert('Food x: ' + food.x + ', y: ' + food.y);
 	createFood();
-	alert('Food x: ' + food.x + ', y: ' + food.y);
-	createFood();
-	alert('Food x: ' + food.x + ', y: ' + food.y);
-	
-	return {
-		canvas : canvas
-	}
-	
+	Draw.drawFullMap(food, snake.body);
 })();
