@@ -39,7 +39,11 @@ var Game = (function() {
 	}
 	
 	function performNextStep() {
-		snake.move();
+		var result = snake.move();
+		if(result) {
+			clearInterval(gameLoop);
+			startButton.removeAttribute('disabled');
+		}
 		Draw.drawFullMap(food, snake.body);
 	}
 
