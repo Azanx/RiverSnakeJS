@@ -1,5 +1,5 @@
 /**
- * body of our snake
+ * body of our snake, snake movement logic
  */
 
 var snake = (function(initialLength) {
