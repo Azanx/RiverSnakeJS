@@ -8,7 +8,7 @@ var snake = (function(initialLength) {
 		this.length=initialLength;
 		this.body = [];
 		//populate our snake body
-		for (var i = 0; i < length; i++) {
+		for (var i = length; i > 0; i--) {
 			body.push({x:i,y:0});
 		}
 	}
