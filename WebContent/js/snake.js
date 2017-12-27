@@ -21,7 +21,6 @@ var snake = (function() {
 		var result = false;
 		maxX = Math.floor(mapWidth / fieldSize);
 		maxY = Math.floor(mapHeight / fieldSize);
-		console.log("checkCollisions: "+maxX);
 		
 		if(posX >= maxX || posX < 0|| posY >= maxY || posY < 0)
 			result = true;
@@ -31,11 +30,9 @@ var snake = (function() {
 	
 	//return true if game over (collision occured)
 	function move() {
-		console.log("move: "+ movementDirection.value);
 		body.pop();//remove last tail element
 		var nextX = body[0].x+movementDirection.x;
 		var nextY = body[0].y+movementDirection.y;
-		console.log(nextX + ' ' + nextY)
 		var isCollision = _checkCollisions(nextX, nextY);
 		body.unshift({x:nextX, y:nextY});		
 		return isCollision;
