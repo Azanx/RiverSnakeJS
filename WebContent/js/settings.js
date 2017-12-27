@@ -8,6 +8,7 @@ var mapHeight = canvas.height;
 var fieldSize = 20; // size of one map field, also size of all objects on
 // the map
 var score = 0;
+var foodValue = 10;
 var highscore = 0;
 var isActive = false;// is game in active state or otherwise not started
 // movement direction, x and y fields mean how many fields to move in which
