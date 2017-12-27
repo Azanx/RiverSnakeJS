@@ -22,9 +22,20 @@ var snake = (function() {
 		var result = false;
 		maxX = Math.floor(mapWidth / fieldSize);
 		maxY = Math.floor(mapHeight / fieldSize);
-		
-		if(posX >= maxX || posX < 0|| posY >= maxY || posY < 0)
+
+		if(posX >= maxX || posX < 0|| posY >= maxY || posY < 0) {
+			console.log("border hit!");
 			result = true;
+		}
+		else {
+			for(var i=0; i<body.length; i++) {
+				if(posX == body[i].x && posY == body[i].y) {
+					console.log("snake body hit!");
+					result = true;
+					break;
+				}
+			}
+		}
 		
 		return result;
 	}
