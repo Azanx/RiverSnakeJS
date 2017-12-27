@@ -16,6 +16,6 @@ var isActive = false;// is game in active state or otherwise not started
 var DIRECTION = Object.freeze({
 	LEFT  : {value:'left',  x:-1, y: 0},
 	RIGHT : {value:'right', x: 1, y: 0},
-	UP    : {value:'up',    x: 0, y: 1},
-	DOWN  : {value:'down',  x: 0, y:-1},
+	UP    : {value:'up',    x: 0, y:-1},
+	DOWN  : {value:'down',  x: 0, y: 1},
 });
