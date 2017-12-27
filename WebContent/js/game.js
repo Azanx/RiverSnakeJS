@@ -2,22 +2,49 @@
  * initializes the game
  */
 
-
 var Game = (function() {
-	var food;// = new CreateFood();
-	document.getElementById('score').textContent = score;
-	document.getElementById('highscore').textContent = highscore;
+	var food;
+	var scoreField = document.getElementById('score')
+	var highscoreField = document.getElementById('highscore')
+	var startButton = document.getElementById('start');
 
+	scoreField.textContent = score;
+	highscoreField.textContent = highscore;
+	
+	startButton.addEventListener("click", function() {
+		start();
+	});
+	
 	function createFood() {
-		this.x = Math.floor(Math.random() * (mapWidth / fieldSize));
-		this.y = Math.floor(Math.random() * (mapHeight / fieldSize));
+		var done = false;
+		while (!done) {
+			this.x = Math.floor(Math.random() * (mapWidth / fieldSize));
+			this.y = Math.floor(Math.random() * (mapHeight / fieldSize));
+			for (var i = 0; i < snake.body.length; i++) {
+				if (snake.body[i].x != x || snake.body[i].y != y) {
+					done = true;
+					break;
+				}
+			}
+		}
 		food = this;
 	}
-//	snake.move();
-//	createFood();
-//	alert('Food x: ' + food.x + ', y: ' + food.y);
-//	createFood();
-//	alert('Food x: ' + food.x + ', y: ' + food.y);
-	createFood();
-	Draw.drawFullMap(food, snake.body);
+
+	var start = function start() {
+		startButton.setAttribute('disabled', true); //disable start button
+		createFood();
+		Draw.drawFullMap(food, snake.body);
+		gameLoop = setInterval(performNextStep, 500);
+		
+	}
+	
+	function performNextStep() {
+		snake.move();
+		Draw.drawFullMap(food, snake.body);
+	}
+
+	return {
+		start : start
+	};
 })();
+//Game.start();
