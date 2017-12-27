@@ -31,10 +31,11 @@ var Game = (function() {
 	}
 
 	var start = function start() {
+		snake.init(5);//init snake with 5 body elements
 		startButton.setAttribute('disabled', true); //disable start button
 		createFood();
 		Draw.drawFullMap(food, snake.body);
-		gameLoop = setInterval(performNextStep, 500);
+		gameLoop = setInterval(performNextStep, 70);
 		
 	}
 	
