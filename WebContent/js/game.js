@@ -11,10 +11,7 @@ var Game = (function() {
 	scoreField.textContent = score;
 	highscoreField.textContent = highscore;
 	
-	startButton.addEventListener("click", function() {
-		start();
-	});
-	
+
 	function createFood() {
 		var done = false;
 		while (!done) {
@@ -47,9 +44,17 @@ var Game = (function() {
 		}
 		Draw.drawFullMap(food, snake.body);
 	}
-
+	
+	//add keyboard and button event listeners
+	startButton.addEventListener("click", function() {
+		start();
+	});
+	
+	document.onkeydown = function(e) {
+		snake.changeDirection(e);
+	};
+	
 	return {
 		start : start
 	};
 })();
-//Game.start();

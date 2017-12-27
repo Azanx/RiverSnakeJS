@@ -4,12 +4,13 @@
 
 var snake = (function() {
 
-	var movementDirection = DIRECTION.RIGHT;
+	var movementDirection;
 	var body = [];
 	
 	//initialise snake clearing previous status if existant
 	function init(initialLength) {
 		body.splice(0,body.length); //remove all previous array elements
+		movementDirection = DIRECTION.RIGHT;
 		//populate our snake body
 		for (var i = initialLength; i > 0; i--) {
 			body.push({x:i,y:0});
@@ -38,11 +39,40 @@ var snake = (function() {
 		return isCollision;
 	}
 	
+	function changeDirection(e) {
+		switch(e.keyCode) {
+		case 37:
+			console.log('left');
+			if(movementDirection != DIRECTION.RIGHT){
+				movementDirection = DIRECTION.LEFT;
+			}
+			break;
+		case 38:
+			console.log('up');
+			if(movementDirection != DIRECTION.DOWN){
+				movementDirection = DIRECTION.UP;
+			}
+            break;
+		case 39:
+			console.log('right');
+			if(movementDirection != DIRECTION.LEFT){
+				movementDirection = DIRECTION.RIGHT;
+			}
+			break;
+		case 40:
+			console.log('down');
+			if(movementDirection != DIRECTION.UP){
+				movementDirection = DIRECTION.DOWN;
+			}
+            break;
+		}
+	}
+	
 	init();
 	return {
 		init : init,
 		body : body,
 		move : move,
-		movementDirection : movementDirection
+		changeDirection: changeDirection
 	};
 })();
