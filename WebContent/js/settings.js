@@ -14,8 +14,8 @@ var isActive = false;// is game in active state or otherwise not started
 // movement direction, x and y fields mean how many fields to move in which
 // direction:
 var DIRECTION = Object.freeze({
-	LEFT  : {x:-1, y: 0},
-	RIGHT : {x: 1, y: 0},
-	UP    : {x: 0, y: 1},
-	DOWN  : {x: 0, y:-1},
+	LEFT  : {value:'left',  x:-1, y: 0},
+	RIGHT : {value:'right', x: 1, y: 0},
+	UP    : {value:'up',    x: 0, y: 1},
+	DOWN  : {value:'down',  x: 0, y:-1},
 });
