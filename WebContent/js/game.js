@@ -21,6 +21,7 @@ var Game = (function() {
 	
 	function updateHighScore() {
 		highscoreField.textContent = highscore;
+		saveHighScoreInCookie(); //function in settings.js
 	}
 
 	function createFood() {
