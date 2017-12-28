@@ -68,7 +68,10 @@ var snake = (function() {
 	
 	//change movement direction if not opposite to current direction
 	function changeDirection(e) {
-		switch(e.keyCode) {
+		var keyCode = e.keyCode;
+//		var keyCode = e.keyCode || e.which;
+		console.log("CURRENT DIRECTION"+movementDirection.value);
+		switch(keyCode) {
 		case 37:
 			console.log('left');
 			if(movementDirection != DIRECTION.RIGHT){

@@ -43,6 +43,8 @@ var Game = (function() {
 		updateScore();
 		snake.init(5);//init snake with 5 body elements
 		startButton.setAttribute('disabled', true); //disable start button
+		startButton.blur();//remove focus from startButton.
+		//on some browsers (ff) it caused keydown to not work
 		createFood();
 		Draw.drawFullMap(food, snake.body);
 		gameLoop = setInterval(performNextStep, 70);
