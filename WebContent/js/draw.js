@@ -6,6 +6,7 @@ var Draw = (function() {
 	var bgColor = 'navy';
 	var snakeColor = 'green';
 	var snakeHeadColor = 'darkgreen';
+	var snakeFaceColor = 'black';
 	var snakePartBorder = 'black';
 	var foodColor = 'yellow';
 
@@ -32,10 +33,10 @@ var Draw = (function() {
 	}
 	
 	function _drawSnake(snakeBody) {
-		_drawSnakePart(snakeBody[0], snakeHeadColor);
-		for(var i=1; i<snakeBody.length; i++) {
+		_drawSnakeFace(snakeBody[0]);
+		var i = 1;
+		for(i; i<snakeBody.length; i++) 
 			_drawSnakePart(snakeBody[i], snakeColor);
-		}
 	}
 	
 	function _drawSnakePart(part, color) {
@@ -45,6 +46,26 @@ var Draw = (function() {
 		ctx.strokeStyle=snakePartBorder;
 		ctx.lineWidth = 2;
 		ctx.strokeRect(part.x * fieldSize, part.y * fieldSize, fieldSize, fieldSize);
+	}
+	
+	function _drawSnakeFace(face) {
+		//draw basic head shape
+		_drawSnakePart(face, snakeHeadColor);
+		//drawing 'face':
+		ctx.fillStyle = snakeFaceColor;
+		//starting at middle of head
+		var direction = snake.getDirection();
+		var x = face.x * fieldSize + fieldSize/2;
+		var y = face.y * fieldSize + fieldSize/2;
+		//draw triangle with one vertice at middle of snake face
+		//and other two same as two vertices of the head in direction of movement
+		ctx.beginPath();
+		ctx.moveTo(x, y);
+		ctx.lineTo(x+direction.x*fieldSize/2-direction.y*fieldSize/2,
+				y+direction.y*fieldSize/2-direction.x*fieldSize/2);
+		ctx.lineTo(x+direction.x*fieldSize/2+direction.y*fieldSize/2,
+				y+direction.y*fieldSize/2+direction.x*fieldSize/2);
+		ctx.fill();
 	}
 	
 	return {

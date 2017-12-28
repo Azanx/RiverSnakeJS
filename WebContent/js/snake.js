@@ -102,11 +102,16 @@ var snake = (function() {
 		}
 	}
 	
+	function getDirection() {
+		return movementDirection;
+	}
+	
 	init();
 	return {
 		init : init,
 		body : body,
 		move : move,
-		changeDirection: changeDirection
+		changeDirection : changeDirection,
+		getDirection : getDirection
 	};
 })();
