@@ -36,20 +36,37 @@ var snake = (function() {
 				}
 			}
 		}
+		return result;
+	}
+	
+	//check if snake found food
+	function _checkForFood(posX, posY, food) {
+		var result = false;
+		if(posX == food.x && posY == food.y) {
+			console.log("found food!");
+			score+=foodValue;
+			Game.updateScore();
+			Game.createFood();
+			result = true;
+		}
 		
 		return result;
 	}
 	
 	//return true if game over (collision occured)
-	function move() {
-		body.pop();//remove last tail element
+	function move(food) {
 		var nextX = body[0].x+movementDirection.x;
 		var nextY = body[0].y+movementDirection.y;
-		var isCollision = _checkCollisions(nextX, nextY);
+		var usCollision = false;
+		if(!_checkForFood(nextX, nextY, food)) {
+			body.pop();//remove last tail element
+			isCollision = _checkCollisions(nextX, nextY);
+		}
 		body.unshift({x:nextX, y:nextY});		
 		return isCollision;
 	}
 	
+	//change movement direction if not opposite to current direction
 	function changeDirection(e) {
 		switch(e.keyCode) {
 		case 37:

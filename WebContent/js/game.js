@@ -8,9 +8,20 @@ var Game = (function() {
 	var highscoreField = document.getElementById('highscore')
 	var startButton = document.getElementById('start');
 
-	scoreField.textContent = score;
-	highscoreField.textContent = highscore;
+	updateScore();
+	updateHighScore();
 	
+	function updateScore() {
+		scoreField.textContent = score;
+		if(score>highscore) {
+			highscore = score;
+			updateHighScore();
+		}
+	}
+	
+	function updateHighScore() {
+		highscoreField.textContent = highscore;
+	}
 
 	function createFood() {
 		var done = false;
@@ -28,6 +39,8 @@ var Game = (function() {
 	}
 
 	var start = function start() {
+		score = 0;
+		updateScore();
 		snake.init(5);//init snake with 5 body elements
 		startButton.setAttribute('disabled', true); //disable start button
 		createFood();
@@ -37,11 +50,11 @@ var Game = (function() {
 	}
 	
 	function performNextStep() {
-		var result = snake.move();
+		var result = snake.move(food);
 		if(result) {
 			clearInterval(gameLoop);
 			startButton.removeAttribute('disabled');
-		}
+		} else
 		Draw.drawFullMap(food, snake.body);
 	}
 	
@@ -55,6 +68,8 @@ var Game = (function() {
 	};
 	
 	return {
-		start : start
+		start : start,
+		createFood : createFood,
+		updateScore : updateScore
 	};
 })();
