@@ -73,25 +73,25 @@ var snake = (function() {
 		console.log("CURRENT DIRECTION"+movementDirection.value);
 		switch(keyCode) {
 		case 37:
-			console.log('left');
+//			console.log('left');
 			if(movementDirection != DIRECTION.RIGHT){
 				movementDirection = DIRECTION.LEFT;
 			}
 			break;
 		case 38:
-			console.log('up');
+//			console.log('up');
 			if(movementDirection != DIRECTION.DOWN){
 				movementDirection = DIRECTION.UP;
 			}
             break;
 		case 39:
-			console.log('right');
+//			console.log('right');
 			if(movementDirection != DIRECTION.LEFT){
 				movementDirection = DIRECTION.RIGHT;
 			}
 			break;
 		case 40:
-			console.log('down');
+//			console.log('down');
 			if(movementDirection != DIRECTION.UP){
 				movementDirection = DIRECTION.DOWN;
 			}
