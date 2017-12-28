@@ -70,7 +70,7 @@ var snake = (function() {
 	function changeDirection(e) {
 		var keyCode = e.keyCode;
 //		var keyCode = e.keyCode || e.which;
-		console.log("CURRENT DIRECTION"+movementDirection.value);
+//		console.log("CURRENT DIRECTION"+movementDirection.value);
 		switch(keyCode) {
 		case 37:
 //			console.log('left');
