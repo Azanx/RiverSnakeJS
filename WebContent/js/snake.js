@@ -5,12 +5,14 @@
 var snake = (function() {
 
 	var movementDirection;
+	var newMovementDirection;
 	var body = [];
 	
 	//initialise snake clearing previous status if existant
 	function init(initialLength) {
 		body.splice(0,body.length); //remove all previous array elements
 		movementDirection = DIRECTION.RIGHT;
+		newMovementDirection = DIRECTION.RIGHT;
 		//populate our snake body
 		for (var i = initialLength; i > 0; i--) {
 			body.push({x:i,y:0});
@@ -55,6 +57,7 @@ var snake = (function() {
 	
 	//return true if game over (collision occured)
 	function move(food) {
+		movementDirection = newMovementDirection;
 		var nextX = body[0].x+movementDirection.x;
 		var nextY = body[0].y+movementDirection.y;
 		var usCollision = false;
@@ -75,25 +78,25 @@ var snake = (function() {
 		case 37:
 //			console.log('left');
 			if(movementDirection != DIRECTION.RIGHT){
-				movementDirection = DIRECTION.LEFT;
+				newMovementDirection = DIRECTION.LEFT;
 			}
 			break;
 		case 38:
 //			console.log('up');
 			if(movementDirection != DIRECTION.DOWN){
-				movementDirection = DIRECTION.UP;
+				newMovementDirection = DIRECTION.UP;
 			}
             break;
 		case 39:
 //			console.log('right');
 			if(movementDirection != DIRECTION.LEFT){
-				movementDirection = DIRECTION.RIGHT;
+				newMovementDirection = DIRECTION.RIGHT;
 			}
 			break;
 		case 40:
 //			console.log('down');
 			if(movementDirection != DIRECTION.UP){
-				movementDirection = DIRECTION.DOWN;
+				newMovementDirection = DIRECTION.DOWN;
 			}
             break;
 		}
